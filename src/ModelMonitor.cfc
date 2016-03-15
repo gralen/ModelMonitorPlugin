@@ -88,6 +88,19 @@ log file of each operation.
 		<Cfargument name="type" type="string">		
 		<Cfargument name="records" type="numeric">		
 		
+		<cftry>
+			<cfset x = get("modelMonitor")>
+			<cfcatch type="any">
+				<Cfset set(modelMonitor=true)>
+			</cfcatch>
+		</cftry> 
+		<cftry>
+			<cfset x = get("modelMonitorFilter")>
+			<cfcatch type="any">
+				<Cfset set(modelMonitorFilter="findAll,findOne")>
+			</cfcatch>
+		</cftry>
+		
 		<cfif get("modelMonitor") && not ListFind(get("modelMonitorFilter"),arguments.type)>		
 			<Cfif not isDefined("request.modelMonitorRequestUUID")>
 				<cfset request.modelMonitorRequestUUID = CreateUUID()>

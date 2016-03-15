@@ -5,7 +5,14 @@
 	<cffile action="write" output="" file="#logFile#">
 </cfif>
 
-<Cffile action="read" file="#logFile#" variable="logText">
+<Cftry>
+	<Cffile action="read" file="#logFile#" variable="logText">
+	<cfcatch type="any">
+		<cffile action="write" output="" file="#logFile#">
+		<Cfset logText="">
+	</cfcatch>
+</Cftry>
+
 <Cfset logText = "[" & reReplaceNoCase(logText,"\n",",","all") & "]">
 <script>
 	var getLogData = function(){
@@ -17,6 +24,7 @@
 	<div class='btn btn-danger'><i class='glyphicon glyphicon-trash'></i> Clear Log</div>
 </a>
 <BR><BR>
+
 
 <cftry>
 	<cfset x = get("modelMonitor")>
@@ -49,8 +57,11 @@
 
 <center>
 	<h3>Model &gt;&gt; Monitor</h3>
-	<cfif get("modelMonitorFilter") neq "">
-		<Cfoutput>(As per 'modelMonitorFilter', not showing calls to: #get("modelMonitorFilter")#)</cfoutput>
-	</Cfif>
+	<cftry>
+		<cfif get("modelMonitorFilter") neq "">
+			<Cfoutput>(As per 'modelMonitorFilter', not showing calls to: #get("modelMonitorFilter")#)</cfoutput>
+		</Cfif>
+		<cfcatch></cfcatch>
+	</cftry>
 </center>
 <HR>
