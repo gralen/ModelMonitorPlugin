@@ -11,7 +11,7 @@ log file of each operation.
 <cfcomponent output="false" mixin="model">
 	<cffunction name="init">
 		<cfscript>
-			this.version = "1.1.8";
+			this.version = "1.1.8,1.4.4";
 			 processingdirective preserveCase="true";
 			return this;
 		</cfscript>
