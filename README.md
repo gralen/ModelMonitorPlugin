@@ -1,0 +1,2 @@
+# ModelMonitorPlugin
+CFWheels Plugin: ModelMonitor
