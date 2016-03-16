@@ -1,8 +1,6 @@
 # CFWheels ModelMonitor Plugin
 
-A CFWheels JDBC call monitor.
-
-Intercepts all model calls and logs the raw 'post adaptor' SQL statement to a simple interface for review. Excellent for confirming your data-tier transactions are ocurring as expected.
+Intercepts model calls and logs the results to a simple interface for review. Excellent for confirming your data-tier transactions are occurring as expected.
 
 Please note: Logs your queries into a .json file in your /files/ directory, which could be publicly available on your web server. ** Not Recommended for Production Use **
 
